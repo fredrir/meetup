@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ChooseSchedule from "../components/schedule/ChooseSchedule.tsx";
 ---
 
 <Layout title="Schedule">
@@ -9,44 +10,6 @@ import Layout from "../layouts/Layout.astro";
         What do <span class="text-blue-600">you</span> want to do?
       </h1>
     </section>
-    <section>
-      <div class="grid md:grid-cols-3 gap-8">
-        {
-          [
-            {
-              title: "Schedule a Meeting",
-              description:
-                "Set your availability and let others book time with you effortlessly.",
-              link: "/schedule/meeting",
-            },
-            {
-              title: "Schedule a Multi-day Event",
-              description:
-                "Plan and organize multi-day events with ease. Share with your team.",
-              link: "/schedule/event",
-            },
-            {
-              title: "Join a Meeting",
-              description:
-                "Conncect to a meeting or event with a simple click.",
-              link: "/schedule/call",
-            },
-          ].map((item, index) => (
-            <div class="bg-blue-50 p-6 rounded-lg h-full flex flex-col">
-              <h3 class="text-xl font-semibold text-gray-800 mb-3">
-                {item.title}
-              </h3>
-              <p class="text-gray-600 flex-grow">{item.description}</p>
-              <a
-                href={item.link}
-                class="block mt-4 bg-blue-600 text-white px-8 py-2 rounded-full text-lg font-semibold hover:bg-blue-700 transition-colors"
-              >
-                Schedule
-              </a>
-            </div>
-          ))
-        }
-      </div>
-    </section>
+    <ChooseSchedule client:load />
   </main>
 </Layout>
