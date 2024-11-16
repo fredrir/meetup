@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: golang-backend
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+    networks:
+      - app-network
+    volumes:
+      - ./backend:/src
+    # depends_on:
+    #   - db  # Uncomment when the DB service is enabled
+
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: astro-frontend
+    ports:
+      - "3000:80"
+    networks:
+      - app-network
+    volumes:
+      - ./frontend:/app
+    depends_on:
+      - backend
+
+  # db:
+  #   image: postgres:13
+  #   container_name: postgres-db
+  #   environment:
+  #     POSTGRES_USER: user
+  #     POSTGRES_PASSWORD: password
+  #     POSTGRES_DB: mydb
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - db-data:/var/lib/postgresql/data
+  #   networks:
+  #     - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db-data:
