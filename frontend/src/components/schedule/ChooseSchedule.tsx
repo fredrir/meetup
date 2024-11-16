@@ -43,13 +43,6 @@ const ChooseSchedule = () => {
     },
   ];
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
-    console.log(data);
-  };
-
   return (
     <section>
       <div className="grid gap-8 md:grid-cols-3">
