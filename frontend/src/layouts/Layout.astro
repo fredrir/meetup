@@ -1,5 +1,12 @@
 ---
+interface Props {
+  title: string;
+}
+
+import Navbar from "../components/Navbar.astro";
 import "../styles/global.css";
+
+const { title } = Astro.props;
 ---
 
 <!doctype html>
@@ -7,10 +14,11 @@ import "../styles/global.css";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Meetup</title>
+    <title>{title}</title>
     <link rel="stylesheet" href="/styles/global.css" />
   </head>
-  <body class="bg-gray-100 text-gray-900">
+  <body class="bg-slate-200 text-black">
+    <Navbar />
     <slot />
   </body>
 </html>
